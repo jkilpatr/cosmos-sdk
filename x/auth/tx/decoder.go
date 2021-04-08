@@ -12,6 +12,7 @@ import (
 func DefaultTxDecoder(cdc codec.ProtoCodecMarshaler) sdk.TxDecoder {
 	return func(txBytes []byte) (sdk.Tx, error) {
 		var raw tx.TxRaw
+		panic("In DefaultTxDecoder")
 
 		// reject all unknown proto fields in the root TxRaw
 		err := unknownproto.RejectUnknownFieldsStrict(txBytes, &raw, cdc.InterfaceRegistry())
@@ -68,6 +69,7 @@ func DefaultTxDecoder(cdc codec.ProtoCodecMarshaler) sdk.TxDecoder {
 // DefaultJSONTxDecoder returns a default protobuf JSON TxDecoder using the provided Marshaler.
 func DefaultJSONTxDecoder(cdc codec.ProtoCodecMarshaler) sdk.TxDecoder {
 	return func(txBytes []byte) (sdk.Tx, error) {
+		panic("In DefaultJsonTxDecoder")
 		var theTx tx.Tx
 		err := cdc.UnmarshalJSON(txBytes, &theTx)
 		if err != nil {

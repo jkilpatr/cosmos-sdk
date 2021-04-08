@@ -191,6 +191,8 @@ func SignatureV2ToStdSignature(cdc *codec.LegacyAmino, sig signing.SignatureV2) 
 type Unmarshaler func(bytes []byte, ptr interface{}) error
 
 func mkDecoder(unmarshaler Unmarshaler) sdk.TxDecoder {
+
+	panic("In mkDecoder")
 	return func(txBytes []byte) (sdk.Tx, error) {
 		if len(txBytes) == 0 {
 			return nil, sdkerrors.Wrap(sdkerrors.ErrTxDecode, "tx bytes are empty")
